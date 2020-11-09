@@ -8,14 +8,16 @@ import java.util.stream.IntStream;
 
 public class MissingInteger {
     public static void main(String[] args) {
-        int K [] = {3, 1}; //Test Array
+        int K[] ={3,5,4,1}; //Test Array  //Only one missing integer is returned
         getValuesMissingInArray(K);
 
     }
-    static int getValuesMissingInArray(int[] values){
+    static int getValuesMissingInArray(int[] K){
+        // K - the array with N integers
+
         ArrayList<Integer> arrayList = new ArrayList<>();
-        for (int value: values){
-            arrayList.add(value);
+        for (int N: K){
+            arrayList.add(N);
         }
 
         // sorting and finding the first and the last
