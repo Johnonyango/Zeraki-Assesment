@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class ReverseCharacters {
     public static void main(String[] args) {
-        String inputString = "rebofaco";
+        String inputString = "Lorem at"; // test string  eroLta m
         String outputString = getReversedString(inputString);
         System.out.println(outputString);
         System.out.println(getReversedString(inputString));
@@ -18,9 +18,13 @@ public class ReverseCharacters {
         StringBuilder sb = new StringBuilder();
 
         for (int i= 0; i<= (stringLength - mod);  i+=4){
-            outputString.add(inputString.substring(i, i+4));
+            try {
+                outputString.add(inputString.substring(i, i+4));
+            }catch (Exception e){
+
+            }
         }
-        if ( (inputString.length()) % 4  > 0 ){
+        if ( mod != 0 ){
             outputString.add(inputString.substring((stringLength-mod), stringLength));
         }
 
