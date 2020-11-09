@@ -16,7 +16,7 @@ INSERT INTO `institution` (`institutionid`, `name`) VALUES
 (5, 'Kibabii');
 --**********end of table 'institution'***********--
 
--- Table structure for table `course`
+-- Table `course`
 CREATE TABLE `course` (
   `courseid` int(11) NOT NULL,
   `name` varchar(250) DEFAULT NULL,
@@ -50,3 +50,41 @@ INSERT INTO `student` (`studentid`, `name`, `courseid`) VALUES
 --**********end of table 'student'***********--
 
 
+-- Indexes for table `institution`
+ALTER TABLE `institution`
+  ADD PRIMARY KEY (`institutionid`);
+
+-- Indexes for table `course`
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`courseid`),
+  ADD KEY `institutionid` (`institutionid`);
+
+-- Indexes for table `student`
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`studentid`),
+  ADD KEY `courseid` (`courseid`);
+
+
+-- AUTO_INCREMENT for table `institution`
+ALTER TABLE `institution`
+  MODIFY `institutionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+
+-- AUTO_INCREMENT for table `course`
+ALTER TABLE `course`
+  MODIFY `courseid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+
+-- AUTO_INCREMENT for table `student`
+ALTER TABLE `student`
+  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+
+-- Constraints for table `course`
+ALTER TABLE `course`
+  ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`institutionid`) REFERENCES `institution` (`institutionid`);
+
+-- Constraints for table `student`
+ALTER TABLE `student`
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`courseid`) REFERENCES `course` (`courseid`);
+COMMIT;
